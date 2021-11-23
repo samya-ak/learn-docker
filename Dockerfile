@@ -7,6 +7,7 @@ RUN npm install
 #Copy rest of the files from this directory in docker image
 COPY . .
 #Open port 3000
+#Environment variable
 ENV PORT 3000
 EXPOSE $PORT
 #Commands for runtime - when container is run
