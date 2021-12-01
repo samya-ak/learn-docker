@@ -1,41 +1,8 @@
-#version of docker compose
 version: "3"
-#Specify all the containers you wanna create
-#Container=service
-services:
-  #name of container
+services:configs:
   node-app:
-    #configurations for node-app
-    #build a container using docker file from current directory
     build: .
-    #can provide list of ports
-    #local:container
     ports:
       - "3000:3000"
-    #list of volumes
-    volumes:
-      #bind mount and make it read only - sync between local project and project from container
-      - ./:/app:ro
-      #prevent node_modules from syncing with local project
-      #It prevents node_modules from being deleted during bind mount when local project doesn't has node_modules
-      - /app/node_modules
     environment:
       - PORT=3000
-    #You can add .env file for environment variables
-    #env_file:
-    #    - ./.env
-
-
-#Run this file with following command for starting container:
-#-d for detach
-#docker-compose up -d
-
-#Run this command for removing and stoping the container
-#-v removes volumes also
-#docker-compose down -v
-
-
-#whenever we do docker-compose up, it searches existing image using directory-name_container-name format.
-# if the image already exists no new build is created. Use the following command to forde build
-
-#docker-compose up -v --build

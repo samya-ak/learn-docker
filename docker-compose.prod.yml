@@ -1,0 +1,11 @@
+version: "3"
+services:configs:
+  node-app:
+    build:
+      #Location of the docker file
+      context: . 
+      args: 
+        NODE_ENV: production
+    environment:
+      - NODE_ENV=production
+    command: npm index.js
