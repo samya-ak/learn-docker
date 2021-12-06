@@ -1,8 +1,21 @@
 version: "3"
-services:configs:
+services:
   node-app:
     build: .
     ports:
       - "3000:3000"
     environment:
       - PORT=3000
+      
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=samyak
+    #named volume to retain db data after container is down
+    volumes:
+      - mongo-db:/data/db
+
+#declaring a volume
+volumes: 
+  mongo-db:

@@ -1,5 +1,5 @@
 version: "3"
-services:configs:
+services:
   node-app:
     build:
       #Location of the docker file
