@@ -16,32 +16,43 @@ A Docker Compose file is a YAML file that defines how Docker containers should b
 
 ```shell
 docker build .
+
 # list docker images
 docker image ls 
+
 # remove the specific docker image
 docker image rm <image id> 
+
 # build an image with name
 docker build -t <image name> . 
+
 # build a container with a custom name using an image in detached mode using binded host directory
 # docker run -v $(pwd):/app -v /app/node_modules --env PORT=4000 -p 3000:4000 -d --name node-app node-app-image
 # ro : readonly - you dont want containers creating files in your host directory
 # in case you have multiple environment variables, you can use --env-file <env file dir> option instead of --env multiple times
 docker run -v <path to folder on host machine>:<path to folder on container>:ro -v <path to files/folder you dont wanna sync with host folder> --env <env var key>=<env var value> -p <host machine port>:<container port> -d --name <container name> <image name> 
+
 # show running container processes
 # -a : show all containers - started or stopped
 docker ps [-a]
+
 # delete a running container
 # -f : force delete
 # -v : delete associated volumes as well
 docker rm <container name> -fv
+
 # login to docker container in interactive mode
 docker exec -it <container name> bash
+
 # show logs of a container
 docker logs <container name>
+
 # list volumes
 docker volume ls
+
 # remove volume by its name
 docker volume rm <volume name>
+
 # remove all unnecessary volumes
 docker volume prune
 ```
