@@ -1,3 +1,4 @@
+# base image
 FROM node:15
 #Sets /app as root directory to run commands from
 WORKDIR /app
@@ -12,6 +13,8 @@ RUN if [ "$NODE_ENV" = "development" ];\
 	fi
 
 #Copy rest of the files from this directory in docker image
+# we are first copying package.json and then remaining files because we don't wanna reiterate building 
+# package.json and npm install (assets that rarely change while developing) when all that changed was source code files.
 COPY . .
 #Open port 3000
 #Environment variable
