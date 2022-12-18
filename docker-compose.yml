@@ -1,4 +1,6 @@
+# common configuration for both dev and prod
 version: "3"
+# container is synonymous to service
 services:
   node-app:
     build: .

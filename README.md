@@ -12,6 +12,12 @@ Docker Compose is a tool for defining and running multi-container Docker applica
 
 A Docker Compose file is a YAML file that defines how Docker containers should be configured and run. It specifies the services that make up your application, as well as any volumes, networks, and other resources that they need.
 
+### From Dockerfile to Image to Container
+It all starts with **Dockerfile** that has instructions on how to build a specific **Docker image**. **Docker image** is an immutable file that contains source code, dependencies and tools needed to run an application. `docker build` creates image from Dockerfile. This image is then used as template to run an application in an isolated environment called **container**. `docker create` can be used to create a new container from an image.
+
+- `docker create` : creates a fresh new container but doesn't run it immediately
+- `docker start`  : starts any stopped container
+- `docker run` : creates and starts a new container immediately. It also can pull an image from Docker Hub if it doesn't find the mentioned image on your system
 ### Common CLI commands
 
 ```shell
@@ -55,4 +61,17 @@ docker volume rm <volume name>
 
 # remove all unnecessary volumes
 docker volume prune
+
+# start containers from docker compose file
+# -d : detached mode
+# --build : build images before starting containers
+docker-compose up -d --build
+
+# stop containers from docker compose file
+# -v : delete unnecessary volumes that docker-compose created
+docker-compose down -v
+
+# start containers using multiple docker compose files. files that come later overrides the
+# common config from initial files
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 ```
