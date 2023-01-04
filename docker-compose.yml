@@ -8,16 +8,22 @@ services:
       - "3000:3000"
     environment:
       - PORT=3000
+    # makes sure that mongo container is started first
+    # but doesn't consider if mongo db is up and running
+    # need to manually write logic to handle this scenario
+    # mongoose keeps trying to connect every 30 seconds out of the box in this instance though
+    depends_on:
+      - mongo
 
   mongo:
     image: mongo
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=samyak
-    #named volume to retain db data after container is down
+    # named volume to retain db data after container is down
     volumes:
       - mongo-db:/data/db
 
-#declaring a named volume
+# declaring a named volume
 volumes:
   mongo-db:

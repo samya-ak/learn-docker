@@ -88,4 +88,7 @@ docker inspect <container name>
 
 # list networks
 docker network ls
+
+# run specific container/service but ignore its dependencies
+docker-compose -f <docker compose yaml file> up -d --no-deps <service name>
 ```
