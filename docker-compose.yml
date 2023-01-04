@@ -8,7 +8,7 @@ services:
       - "3000:3000"
     environment:
       - PORT=3000
-      
+
   mongo:
     image: mongo
     environment:
@@ -18,6 +18,6 @@ services:
     volumes:
       - mongo-db:/data/db
 
-#declaring a volume
-volumes: 
+#declaring a named volume
+volumes:
   mongo-db:

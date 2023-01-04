@@ -5,6 +5,7 @@ const app = express();
 //can use ip address instead of mongo while connecting, since ip may change whenever we run a container, it is not used
 //directly. Instead, service name is used
 mongoose
+  // here mongo is the name of the service which is resolved to its respective ip address
   .connect("mongodb://root:samyak@mongo:27017/?authSource=admin")
   .then(() => console.log("successfully coneected to DB"))
   .catch((e) => console.log(e));
