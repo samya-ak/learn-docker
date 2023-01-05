@@ -3,7 +3,11 @@ const {
   MONGO_PASSWORD,
   MONGO_IP,
   MONGO_PORT,
+  REDIS_URL,
+  SESSION_SECRET,
+  REDIS_PORT,
 } = require("./config/config");
+
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();

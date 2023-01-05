@@ -91,4 +91,7 @@ docker network ls
 
 # run specific container/service but ignore its dependencies
 docker-compose -f <docker compose yaml file> up -d --no-deps <service name>
+
+# run duplicate containers
+docker-compose -f <docker compose file> up -d --scale <service name>=<number of instances>
 ```
